@@ -26,5 +26,16 @@ public class VarEx3 {
         System.out.println(.10);
         System.out.println(10f);
         System.out.println(1e3);
+
+        char ch = 'A';
+        System.out.println(ch);
+        int i = 'A';
+        System.out.println(i);
+
+        String str = ""; // 빈 문자열
+        String str2 = "ABCD";
+        String str3 = "123";
+        System.out.println(str+str2+str3);
+
     }
 }
