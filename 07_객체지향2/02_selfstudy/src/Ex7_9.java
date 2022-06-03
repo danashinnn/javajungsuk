@@ -1,0 +1,87 @@
+class Product2 {
+    int price;
+    int bonusPoint;
+
+    Product2() {}
+
+    Product2(int price) {
+        this.price = price;
+        bonusPoint = (int)(price/10.0);
+    }
+}
+
+class Tv2 extends Product2 {
+    Tv2() {
+        super(100);
+    }
+
+    public String toString() {
+        return "TV";
+    }
+}
+
+class Computer2 extends Product2 {
+    Computer2() {
+        super(200);
+    }
+
+    public String toString() {
+        return "Computer";
+    }
+}
+
+class Audio2 extends Product2 {
+    Audio2() {
+        super(50);
+    }
+
+    public String toString() {
+        return "Audio";
+    }
+}
+
+class Buyer2 {
+    int money = 1000;
+    int bonusPoint = 0;
+
+    Product2[] cart = new Product2[10];
+    int i = 0;
+
+    void buy(Product2 p) {
+        if(money < p.price) {
+            System.out.println("잔액이 부족합니다.");
+            return;
+        }
+
+        money -= p.price;
+        bonusPoint += p.bonusPoint;
+        cart[i++] = p;
+        System.out.println(p.toString()+"를 구입하셨습니다.");
+    }
+
+    void summary() {
+        int sum = 0;
+        String list = "";
+
+        for(int i=0; i<cart.length; i++) {
+            if(cart[i]==null) break;
+
+            sum += cart[i].price;
+            list += cart[i].toString()+", ";
+        }
+
+        System.out.println("구입하신 물건 가격의 합계는 "+sum+"만원입니다.");
+        System.out.println("구입하신 물건 목록은 "+list+"입니다.");
+        System.out.println("현재 잔액은 "+money+"만원입니다.");
+    }
+}
+
+public class Ex7_9 {
+    public static void main(String[] args) {
+        Buyer2 b = new Buyer2();
+        b.buy(new Tv2());
+        b.buy(new Computer2());
+        b.buy(new Audio2());
+        b.summary();
+    }
+}
